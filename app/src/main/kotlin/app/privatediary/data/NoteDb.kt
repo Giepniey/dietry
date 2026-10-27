@@ -10,8 +10,7 @@ import net.zetetic.database.sqlcipher.SQLiteOpenHelper
 
 /** SQLCipher database. [hexKey] is the 256-bit data key; SQLCipher gets it as a raw key, so no password KDF runs here. */
 class NoteDb(context: Context, hexKey: String) :
-    SQLiteOpenHelper(context, "diary.db", "x'$hexKey'", null, 1, 0, null, null) {
-
+      SQLiteOpenHelper(context, "diary.db", "x'$hexKey'", null, 1, 0, null, null, false) {
     override fun onCreate(db: SQLiteDatabase) {
         db.execSQL(
             "CREATE TABLE notes(id INTEGER PRIMARY KEY, title TEXT NOT NULL, body TEXT NOT NULL, " +
